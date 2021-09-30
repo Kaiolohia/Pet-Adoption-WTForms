@@ -1,0 +1,22 @@
+{% extends "base.html" %} 
+{% block title %} Home Page {% endblock %} 
+{% block content%}
+<h1 class="text-center display-1">Pets</h1>
+
+<div class="container">
+    <div class="row">
+        {% for pet in pets %}
+            <div class="col-4">
+            <figure class="figure">
+                <img src="{{pet.photo_url}}" class="figure-img img-thumbnail rounded">
+                <figcaption class="figure-caption"><b><a href="/pets/{{pet.id}}" class="nav-item">{{pet.name}}</a>
+                    {% if pet.avalible == true %} is avalible!{% endif %}</b></figcaption>
+            </figure>
+            </div>
+        {% endfor %}
+    </div>
+    
+<a href="/pets/new" class="btn btn-md btn-primary">Add a new pet</a>
+</div>
+
+{% endblock%}

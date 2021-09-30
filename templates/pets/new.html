@@ -1,0 +1,48 @@
+{% extends "base.html" %} 
+{% block title %} New pet {% endblock %} 
+{% block content%}
+<h1 class="h1 text-center">Create new pet</h1>
+<div class="container">
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {% for field in form.errors %}
+        {% for error in form.errors[field] %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Errorr</strong> {{error}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+        {% endfor %}
+        <div class="mb-3 form-group">
+            <div class="row justify-content-center">
+                <div class="col-5">    
+                {{form.name.label(class_="form-label")}}
+                {{form.name(class_="form-control")}}    
+                </div>
+                <div class="col-5">    
+                    {{form.species.label(class_="form-label")}}
+                    {{form.species(class_="form-control")}}    
+                </div>
+                <div class="col-2">    
+                    {{form.age.label(class_="form-label")}}
+                    {{form.age(class_="form-control")}}    
+                </div>
+            </div>
+            
+        </div>
+        <div class="mb-3 form-group">
+                {{form.photo_url.label(class_="form-label")}}
+                {{form.photo_url(class_="form-control")}}
+                <div class="form-text text-disabled">Optional</div>
+        </div>
+        <div class="mb-3 form-group">
+            {{form.notes.label(class_="form-label")}}
+            {{form.notes(class_="form-control")}}
+            <div class="form-text text-disabled">Optional</div>
+        </div>
+        <button class="btn btn-outline-primary btn-md">Submit</button>
+        <a href="/" class="btn btn-outline-warning btn-mg">Go back</a>
+    </form>
+</div>
+{% endblock%}

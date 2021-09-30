@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% block title %} {{pet.name}} {% endblock %} 
+{% block content%}
+<h1 class="text-center display-1">{{pet.name}}</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <figure class="figure">
+            <img src="{{pet.photo_url}}" class="figure-img img-thumbnail rounded">
+            </figure>
+        </div>
+        <div class="col-3">
+            <h4>{{pet.age}} Year(s) old</h4>
+            <hr>
+            <h4>{{pet.species}}</h4>
+        </div>
+        {% if pet.notes %}
+        <div class="col-3">
+            <p><b>Notes on {{pet.name}}:</b> {{pet.notes}}</p>
+        </div>
+        {% endif %}
+    </div>
+    
+</div>
+<div class="container justify-content-center">
+    <a href="/" class="btn btn-md btn-outline-primary">Go home</a>
+    <a href="/pets/{{pet.id}}/edit" class="btn btn-md btn-outline-warning">Edit entry</a>
+</div>
+
+{% endblock%}
